@@ -40,6 +40,7 @@ class SignUp extends Component {
 			await createUserProfileDocument(user, {
 				displayName
 			});
+			//an use it to store username
 			this.setState({
 				displayName     : '',
 				email           : '',

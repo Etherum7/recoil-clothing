@@ -34,8 +34,7 @@ class App extends React.Component {
 									...snapshot.data(),
 									id: snapshot.id
 								}
-							},
-							() => console.log(this.state)
+							}
 						);
 					});
 				}
@@ -45,7 +44,7 @@ class App extends React.Component {
 					});
 				}
 
-				//console.log(user);
+				
 			}
 		);
 	}
