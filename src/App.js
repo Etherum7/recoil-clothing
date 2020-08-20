@@ -4,7 +4,7 @@ import { useRecoilState } from 'recoil';
 import { currentUserState } from './recoil/user/user.atom';
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component';
-
+import CheckoutPage from './pages/checkout/checkout.component';
 import './App.css';
 import Header from './components/header/header.component';
 import SignInAndSignUp from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
@@ -45,6 +45,7 @@ function App() {
 			<Switch>
 				<Route exact path="/" component={HomePage} />
 				<Route exact path="/shop" component={ShopPage} />
+				<Route exact path="/checkout" component={CheckoutPage} />
 				<Route
 					exact
 					path="/signin"
