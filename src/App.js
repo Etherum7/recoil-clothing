@@ -1,6 +1,11 @@
 import React, { useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { useRecoilState,useSetRecoilState, useTransactionObservation_UNSTABLE } from 'recoil';
+import {
+	useRecoilState,
+	useSetRecoilState,
+	useTransactionObservation_UNSTABLE
+} from 'recoil';
+
 import { currentUserState } from './recoil/user/user.atom';
 import { cartItemsState } from './recoil/cart/cart.atom';
 import HomePage from './pages/homepage/homepage.component';
@@ -10,7 +15,11 @@ import './App.css';
 import Header from './components/header/header.component';
 import SignInAndSignUp from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 //auth
-import { auth, createUserProfileDocument } from './firebase/firebase.utils';
+import {
+	auth,
+	createUserProfileDocument,
+	
+} from './firebase/firebase.utils';
 
 function App() {
 	const [ currentUser, setCurrentUser ] = useRecoilState(currentUserState);
@@ -34,7 +43,6 @@ function App() {
 	useInitializeState();
 	useEffect(
 		() => {
-			
 			const unsubscribeFromAuth = auth.onAuthStateChanged(
 				async (userAuth) => {
 					if (userAuth) {
@@ -51,14 +59,15 @@ function App() {
 					else {
 						setCurrentUser(userAuth);
 					}
+					
 				}
 			);
-			
+
 			return function cleanUp() {
 				unsubscribeFromAuth();
 			};
-			
 		},
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[ setCurrentUser ]
 	);
 	return (
@@ -66,7 +75,7 @@ function App() {
 			<Header />
 			<Switch>
 				<Route exact path="/" component={HomePage} />
-				<Route  path="/shop" component={ShopPage} />
+				<Route path="/shop" component={ShopPage} />
 				<Route exact path="/checkout" component={CheckoutPage} />
 				<Route
 					exact

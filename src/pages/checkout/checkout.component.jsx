@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
+import StripeCheckoutButton from '../../components/stripe-button/stripe-button.component';
 
 import { cartItemsState } from '../../recoil/cart/cart.atom';
 import { cartItemsTotalState } from '../../recoil/cart/cart.selectors';
@@ -35,6 +36,12 @@ function CheckOutPage() {
 				<CheckOutItem key={cartItem.id} cartItem={cartItem} />
 			))}
 			<div className="total">TOTAL : ${cartTotal}</div>
+			<div className='test-warning'>
+			*Please use the following test credit card for payments*
+			<br />
+			4242 4242 4242 4242 - Exp: 01/20 - CVV: 123
+		  </div>
+		  <StripeCheckoutButton price={cartTotal} />
 		</div>
 	);
 }
